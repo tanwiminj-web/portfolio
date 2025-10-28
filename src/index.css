@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes progress {
+    from {
+      width: 0;
+    }
+  } 
+ /* Fix for letters like j, y, g, p getting cut off */
+body, p, h1, h2, h3, h4, h5, h6 {
+  line-height: 1.6;
+  overflow: visible;
+  vertical-align: baseline;
+}
+
+/* Add breathing space below each section */
+section, .hero-section {
+  padding-bottom: 3rem;
+  overflow: visible !important;
+  text-align: center; /* ensures content stays centered */
+}
+
+/* Ensure hero text (like your name) has enough breathing space */
+h1 {
+  padding-bottom: 6px;
+  text-align: center;
+}
+
+/* Fix for section titles (My Skills, Certificates, Achievements) */
+h2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1.5;
+  overflow: visible;
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+/* Icons inside headings won’t cut off letters */
+h2 svg, h2 i, h2 img {
+  vertical-align: middle;
+  overflow: visible;
+}
+
+/* Buttons text not cut off + centered */
+button, .btn, .button {
+  line-height: 1.4;
+  padding-bottom: 8px;
+  overflow: visible;
+  display: inline-block;
+  text-align: center;
+}
+
+  
+  .animate-slide-in {
+    animation: slideIn 0.5s ease-out forwards;
+  }
+
+  .animate-progress {
+    animation: progress 1.5s ease-out forwards;
+  }
+}
+
+/* ----- Ensure section titles stay centered and buttons appear below ----- */
+h2 {
+  display: block !important;
+  text-align: center !important;
+  margin: 0 auto 12px !important;
+  line-height: 1.4 !important;
+  white-space: normal;
+}
+
+h2 > span, h2 > i, h2 > img {
+  vertical-align: middle;
+}
+
+h2 + .btn,
+h2 + .button,
+h2 + button,
+.section .btn,
+.cert-card .btn,
+.achievements .btn {
+  display: inline-block !important;
+  margin: 16px auto 0 !important;
+  float: none !important;
+  clear: both !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.section,
+.cert-card,
+.achievements,
+.project-card {
+  display: block;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  h2 { font-size: 1.6rem; }
+  h2 + .btn, .btn { width: auto; padding: 12px 20px; }
+}
+
